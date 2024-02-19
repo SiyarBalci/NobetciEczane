@@ -35,6 +35,6 @@ Lütfen unutmayın ki, bu sadece geliştirme aşamasında geçici bir çözümd�
 
 Herhangi bir sorunuz veya yardıma ihtiyacınız varsa, aşağıdaki iletişim bilgilerinden bize ulaşabilirsiniz:
 
-- Proje Geliştiricileri: [Nefise Tanrıkulu](mailto:nefise@example.com), [Şiyar Hüseyin BALCI](mailto:oyunkenti.net@gmail.com)
+- Proje Geliştiricileri: [Nefise Tanrıkulu](mailto:nefisetanrikulu@gmail.com), [Şiyar Hüseyin BALCI](mailto:oyunkenti.net@gmail.com)
 
 Not: CORS hatasıyla ilgili sorunları aşabilmek için sunucu tarafında gerekli düzenlemelerin yapılması önemlidir. Bu konuda sunucu tarafındaki sorumlulara ulaşmaya çalışmalısınız.
