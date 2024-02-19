@@ -1,0 +1,63 @@
+.cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .cart-item {
+    width: 23%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  .cart-item strong {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    background-color: rgb(230, 12, 12) !important;
+    color: white;
+    border-radius: 20px;
+  }
+  
+  .cart-item button {
+    margin-top: 10px;
+    padding: 8px 5px;
+    background-color: #5069c4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  
+  .cart-item button:hover {
+    background-color: #0056b3;
+  }
+ /* Medya sorguları */
+@media only screen and (max-width: 1200px) {
+  .cart-item {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cart-item {
+    width: 100%;
+  }
+}
+
+/* Mobil boyutları için stil kuralları */
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+
+  .cart-item {
+    margin: 5px;
+  }
+}
+  
