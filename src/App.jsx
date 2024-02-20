@@ -4,6 +4,7 @@ import './Cart.css';
 
 const App = () => {
   const [eczaneler, setEczaneler] = useState([]);
+  const [filteredEczaneler, setFilteredEczaneler] = useState([]);
   const [userLocation, setUserLocation] = useState(null);
 
   useEffect(() => {
@@ -21,37 +22,51 @@ const App = () => {
     } else {
       console.error('Tarayıcı konum algılamayı desteklemiyor.');
     }
+
+    // Eczaneleri çek
+    fetch('https://cors-anywhere.herokuapp.com/https://www.beo.org.tr/nobet-belediye', {
+      method: 'GET',
+      headers: {
+        'Origin': 'https://your-origin-domain.com', // Bu başlığı kendi etki alanınıza uygun olarak güncelleyin.
+        'Content-Type': 'application/json', // İstek içeriğine uygun olarak güncelleyin.
+        // Diğer gerekli başlıkları ekleyebilirsiniz.
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const eczaneDizisi = Object.values(data).filter((item) => typeof item === 'object');
+        setEczaneler(eczaneDizisi);
+        setFilteredEczaneler(eczaneDizisi);
+      })
+      .catch((error) => {
+        console.error('Fetch error:', error);
+      });
   }, []);
+
+  const handleSearch = (searchTerm) => {
+    const filteredEczaneler = eczaneler.filter((eczane) =>
+      eczane.ilce.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      eczane.bolge.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  
+    setFilteredEczaneler(filteredEczaneler);
+  };
 
   useEffect(() => {
     // Konum alındıktan sonra en yakın eczaneleri sırala
     if (userLocation) {
-      fetch('https://www.beo.org.tr/nobet-belediye', {
-        method: 'GET',
-        credentials: 'include',
-        mode: 'cors',
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then((data) => {
-          const eczaneDizisi = Object.values(data).filter((item) => typeof item === 'object');
+      const sortedEczaneler = [...filteredEczaneler].sort((a, b) => {
+        const distanceA = calculateDistance(userLocation.latitude, userLocation.longitude, a.enlem, a.boylam);
+        const distanceB = calculateDistance(userLocation.latitude, userLocation.longitude, b.enlem, b.boylam);
+        return distanceA - distanceB;
+      });
 
-          // En yakın eczaneleri sırala
-          const sortedEczaneler = eczaneDizisi.sort((a, b) => {
-            const distanceA = calculateDistance(userLocation.latitude, userLocation.longitude, a.enlem, a.boylam);
-            const distanceB = calculateDistance(userLocation.latitude, userLocation.longitude, b.enlem, b.boylam);
-            return distanceA - distanceB;
-          });
-
-          setEczaneler(sortedEczaneler);
-        })
-        .catch((error) => {
-          console.error('Fetch error:', error);
-        });
+      setFilteredEczaneler(sortedEczaneler);
     }
   }, [userLocation]);
 
@@ -70,9 +85,10 @@ const App = () => {
 
   return (
     <div>
-      <h1 className='redHeader'>BURSA NÖBETCİ ECZANE LİSTESİ</h1>
+      <h1 className='redHeader'>BURSA NÖBETCİ ECZANE</h1>
+      <input type="text" placeholder="İlçe veya Bölge Ara" onChange={(e) => handleSearch(e.target.value)} />
       <div className='cart-container'>
-        {eczaneler.map((eczane, index) => (
+        {filteredEczaneler.map((eczane, index) => (
           <div key={index} className='cart-item'>
             <strong className='header'>{eczane.eczane}</strong>
             <p>{`${eczane.ilce}, ${eczane.bolge}`}</p>

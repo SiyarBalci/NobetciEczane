@@ -1,7 +1,7 @@
 #root {
   max-width: auto;
-  margin: 0 auto;
-  padding: 1rem;
+  margin: 0; /* Margin sıfırlandı */
+  padding: 0; /* Padding sıfırlandı */
   text-align: center;
 }
 
@@ -43,17 +43,18 @@
 
 .redHeader {
 
-  border-radius: 222px;
+  border-radius: 1px;
   background-color: rgb(221, 15, 15);
   color :white;
-  border: 5px solid #da2c2c;
-  font-style: bold;
+  border: 9px solid #da2c2c;
+  font-size: 35px;
+  
 
 }
 .footer {
-background-color: #da2c2c;
-left: 1;
-padding: 15px;
+background-color: #e32c1e;
+left: 0;
+padding: 11px;
 font-size: bold;
 text-align: center;
 color: white;
@@ -85,4 +86,16 @@ footer p {
   .cart-item {
     margin: 5px;
   }
+}
+input[type="text"] {
+  padding: 8px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #ff0000; /* Varsayılan olarak kırmızı çerçeve ekledik, kendi zevkinize göre düzenleyebilirsiniz */
 }
