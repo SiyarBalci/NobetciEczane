@@ -16,6 +16,7 @@
   
   .cart-item strong {
     display: block;
+    border: 1px black solid;
     font-size: 1.2em;
     margin-bottom: 10px;
     background-color: rgb(230, 12, 12) !important;
@@ -29,6 +30,7 @@
     background-color: #5069c4;
     color: #fff;
     border: none;
+    border: 1px black solid;
     border-radius: 5px;
     cursor: pointer;
     border-radius: 20px;

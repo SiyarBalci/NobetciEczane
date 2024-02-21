@@ -46,15 +46,16 @@
   border-radius: 1px;
   background-color: rgb(221, 15, 15);
   color :white;
-  border: 9px solid #da2c2c;
+  border: 1px solid black;
   font-size: 35px;
   
 
 }
 .footer {
-background-color: #e32c1e;
+background-color:rgb(221, 15, 15);
 left: 0;
 padding: 11px;
+border: 1px solid black;
 font-size: bold;
 text-align: center;
 color: white;

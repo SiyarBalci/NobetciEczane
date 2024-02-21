@@ -24,7 +24,7 @@ const App = () => {
     }
 
     // Eczaneleri çek
-    fetch('https://cors-anywhere.herokuapp.com/https://www.beo.org.tr/nobet-belediye', {
+    fetch('https://cors-anywhere-p2im.onrender.com/https://www.beo.org.tr/nobet-belediye', {
       method: 'GET',
       headers: {
         'Origin': 'https://your-origin-domain.com', // Bu başlığı kendi etki alanınıza uygun olarak güncelleyin.
